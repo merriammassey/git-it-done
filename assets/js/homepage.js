@@ -14,14 +14,14 @@ var getUserRepos = function() {
   };
   */
  // identify containers for displaying data
- var repoContainerEl = document.querySelector("#repos-container");
+var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
 
 
 
 // capture form input
- var userFormEl = document.querySelector("#user-form");
- var nameInputEl = document.querySelector("#username");
+var userFormEl = document.querySelector("#user-form");
+var nameInputEl = document.querySelector("#username");
 
  // a function to handle the form input
  var formSubmitHandler = function(event) {
@@ -65,8 +65,6 @@ var repoSearchTerm = document.querySelector("#repo-search-term");
     });
   };
 //  getUserRepos();
-
-userFormEl.addEventListener("submit", formSubmitHandler);
 
 // function that accepts array of data and search term as parameters
 var displayRepos = function(repos, searchTerm) {
@@ -120,3 +118,5 @@ var displayRepos = function(repos, searchTerm) {
     }
   };
 
+// add event listeners to forms
+userFormEl.addEventListener("submit", formSubmitHandler);
