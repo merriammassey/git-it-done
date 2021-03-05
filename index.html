@@ -21,6 +21,7 @@
 
   <main class="flex-row justify-space-between">
     <div class="col-12 col-md-4">
+      <!--card div with form-->
       <div class="card">
         <h3 class="card-header text-uppercase">Search By User</h3>
         <form id="user-form" class="card-body">
@@ -29,12 +30,23 @@
           <button type="submit" class="btn">Get User</button>
         </form>
       </div>
+      <!--card div with language buttons-->
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search by Topic</h3>
+        <div class="card-body" id="language-buttons">
+          <button class="btn" data-language="javascript">JavaScript</button>
+          <button class="btn" data-language="html">HTML</button>
+          <button class="btn" data-language="css">CSS</button>
+        </div>
+      </div>
+
     </div>
 <!-- div to display data-->
     <div class="col-12 col-md-8">
       <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
       <div id="repos-container" class="list-group"></div>
     </div>
+    <!-- div to show a message about >30 issues-->
     <div id="limit-warning">
 
     </div>

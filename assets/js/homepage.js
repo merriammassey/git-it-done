@@ -16,7 +16,7 @@ var getUserRepos = function() {
  // identify containers for displaying data
 var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
-
+var languageButtonsEl = document.querySelector("#language-buttons");
 
 
 // capture form input
@@ -121,3 +121,45 @@ var displayRepos = function(repos, searchTerm) {
 
 // add event listeners to forms
 userFormEl.addEventListener("submit", formSubmitHandler);
+
+// function that accepts language parameter, creates an api endpoint, and makes an HTTP request to that endpoint using fedtch()
+var getFeaturedRepos = function(language) {
+  var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
+
+  fetch(apiUrl).then(function(response) {
+  // view response in network tab
+  
+  // format response before displaying it
+  if (response.ok) {
+    //console.log(response);
+    //parse the response and log the data
+    response.json().then(function(data) {
+      //console.log(data)
+      // pass data.items and language parameters into displayRepos fucntion
+      displayRepos(data.items,language);
+      //test by calling getFeaturedRepos("javascript"); in devtools
+    });
+
+  } else {
+    alert("Error: " + response.statusText);
+  }
+  // call getFeaturedRepos("javascript") in console to see response objeet 
+});
+};
+
+//function to select language on button click
+var buttonClickHandler = function(event) {
+var language = event.target.getAttribute("data-language");
+console.log(language);
+
+//get featued repos in the chosen language
+if (language) {
+  getFeaturedRepos(language);
+
+  //clear old content
+  repoContainerEl.textContent = "";
+}
+}
+
+//parent div event listener for language buttons
+languageButtonsEl.addEventListener("click", buttonClickHandler);
