@@ -1,5 +1,16 @@
+
+var repoNameEl = document.querySelector("#repo-name");
 var repoNameEl = document.querySelector("#repo-name");
 
+//function to extract query value from query string
+var getRepoName = function() {
+    var queryString = document.location.search;
+    var repoName = queryString.split("=")[1];
+    //console.log(repoName);
+    //pass repoName to get repos function 
+    getRepoIssues(repoName);
+    repoNameEl.textContent = repoName;
+}
 // identify container for message about >30 issues
 var limitWarningEl = document.querySelector("#limit-warning");
 
@@ -90,4 +101,5 @@ var displayWarning = function(repo) {
     limitWarningEl.appendChild(linkEl);
 };
 
-getRepoIssues("facebook/react");
+//getRepoIssues("facebook/react");
+getRepoName(); 
